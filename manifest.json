@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Extension name",
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"description": "Get description",
 	"icons": {
 		"16": "assets/images/logo.png",
@@ -16,5 +16,16 @@
 		},
 		"default_popup": "popup.html",
 		"default_title": "popup title"
-	}
+	},
+	"permissions": ["tabs", "activeTab", "storage"],
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://*/*", "http://*/*"],
+			"js": ["contentScript.js"]
+		}
+	]
 }
